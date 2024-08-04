@@ -7,7 +7,8 @@ struct Pilha{
         Noh *prox;
     };
     Noh *topo;
-    Pilha() : topo(nullptr){}
+    
+    Pilha() : topo{nullptr}{}
 
     void empilhar(int e){
         // Noh novo = new Noh;
