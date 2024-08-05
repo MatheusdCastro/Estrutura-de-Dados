@@ -1,32 +1,34 @@
 #include <iostream>
 #include <exception>
+#include <string>
+using namespace std;
 
 struct Pilha{
     struct Noh{
-        int elem;
+        string elem;
         Noh *prox;
     };
     Noh *topo;
     
     Pilha() : topo{nullptr}{}
 
-    void empilhar(int e){
+    void empilhar(string s){
         // Noh novo = new Noh;
         // novo->elem = e;
         // novo->prox = topo;
         // topo = novo;
-        topo = new Noh {e, topo};
+        topo = new Noh {s, topo};
     }
 
     bool vazia(){
         return (topo == nullptr);
     }
 
-    int consultar_Topo(){
+    void consultar_Topo(){
         if(!vazia()){
-            return topo->elem;
+            cout << "Elemento do topo eh: " << topo->elem << '\n';
         }
-        else std::cerr << "Pilha vazia !" << '\n';
+        else cerr << "Pilha vazia !" << '\n';
     }
 
     void desempilhar(){
@@ -35,16 +37,16 @@ struct Pilha{
             topo = topo->prox;
             delete primeiro;
         }
-        else std::cerr << "Pilha vazia !" << '\n';
+        else cerr << "Pilha vazia !" << '\n';
     }
 
     void imprimir(){
         Noh *contador = topo;
         while(contador != nullptr){
-            std::cout << " " << contador->elem;
+            cout << " " << contador->elem << '\n';
             contador = contador->prox;
         }
-        std::cout << '\n';
+        cout << '\n';
     }
 
     ~Pilha(){
@@ -55,14 +57,15 @@ struct Pilha{
 int main(){
     try{
         Pilha p;
-        p.empilhar(8);
-        p.empilhar(10);
-        p.empilhar(555);
+        p.empilhar("8");
+        p.empilhar("frase aleatoria");
+        p.empilhar("555");
         p.desempilhar();
         p.imprimir();
+        p.consultar_Topo();
     }
-    catch(const std::exception &e){
-        std::cerr << "Falha : " << e.what() << '\n';
+    catch(const exception &e){
+        cerr << "Falha : " << e.what() << '\n';
         return 1;
     }
 }

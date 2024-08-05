@@ -1,4 +1,6 @@
-#include<iostream>
+#include <iostream>
+#include <exception>
+#include <string>
 using namespace std;
 
 struct Dicionario{
