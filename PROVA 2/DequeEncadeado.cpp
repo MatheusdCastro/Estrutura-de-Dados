@@ -37,7 +37,6 @@ void inserir_Dir(string s){
           DIR->dir = new Noh {s, DIR, nullptr};
           DIR = DIR->dir;
      }
-
 }
 
 void remover_Esq(){
