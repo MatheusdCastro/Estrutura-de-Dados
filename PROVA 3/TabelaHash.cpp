@@ -23,6 +23,15 @@ struct DicioTH{//TABELA HASH
 
     ~DicioTH(){
         // só delete[] T ? R= não, tem q desalocar cada nó, pois desalocaria somente o vetor para ponteiros, mas os ponteiros em si ainda existem
+        for(int i = 0; i < m; i++){
+            Noh *n = T[i];
+            while(n != &sent){
+                Noh *p = n->prox;
+                delete n;
+                n = p;
+            }
+        }
+        delete[] T;
     }
 
     void redimensionar(int novo_tam){
