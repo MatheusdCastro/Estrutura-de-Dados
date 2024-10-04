@@ -31,14 +31,14 @@ struct ConjABB{//Arvore Binaria de Busca
         Noh *n = Raiz;
         while(true){
             if(e < n->elem){
-                if(n->esq == null){
+                if(n->esq == nullptr){
                     n->esq = novo;
                     return;
                 }
                 n = n->esq;
             }
             else{
-                if(n->dir == null){
+                if(n->dir == nullptr){
                     n->dir = novo;
                     return;
                 }
@@ -64,7 +64,7 @@ struct ConjABB{//Arvore Binaria de Busca
         if(n == nullptr) return;//e não pertence
         //para 0 e 1 filho
         if(n->dir == nullptr){
-            if(n == Raiz) Raiz = n->esq:
+            if(n == Raiz) Raiz = n->esq;
             else if(n == pai->esq) pai->esq = n->esq;
             else pai->dir = n->esq;
         }
@@ -155,7 +155,6 @@ struct ConjABB{//Arvore Binaria de Busca
             while(atual->dir != nullptr) atual = atual->dir;
             return atual->elem;
         }
-        else return;
     }
 
     int acharMin(){

@@ -27,7 +27,28 @@ struct DicioTH{//TABELA HASH
 
     void redimensionar(int novo_tam){
         Noh **U = new Noh*[novo_tam];
-
-
+        int tam_atual = m;
+        m = novo_tam;
+        for(int i = 0; i < novo_tam; i++) U[i] = &sent;
+        for(int i = 0; i < tam_atual; i++){
+            Noh *n = T[i];
+            while(n != sent){
+                Noh *p = n->prox;
+                int j = h(n->chave);
+                n->prox = U[j];
+                U[j] = n;
+                n = p;
+            }
+        }
+        delete[] T;
+        T = U;
     }
+
+    void inserir(int c, string v){
+        if(m == n) redimensionar(2*m);
+        int i = h(c);
+        T[i] = new Noh{c, v, T[i]};
+        ++n;
+    }
+
 };
